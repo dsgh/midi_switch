@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby -J-XstartOnFirstThread
+
+require "lib/midi_switch"
+
+if ARGV.length > 1
+  puts "Usage: midiswitch [CLI|swt]"
+elsif ARGV.length > 0 && ARGV[0] == "swt"
+  require "lib/midi_switch/swt"
+  MidiSwitch::Swt::SwtApp.new.start
+else
+  require "lib/midi_switch/cli"
+  MidiSwitch::Cli.new.run
+end
